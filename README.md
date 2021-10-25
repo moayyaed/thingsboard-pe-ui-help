@@ -1,4 +1,4 @@
-# ThingsBoard UI Help Assets
+# ThingsBoard Professional Edition UI Help Assets
 
-Repository with assets used by ThingsBoard UI help engine.
+Repository with assets used by ThingsBoard Professional Edition UI help engine.
 
