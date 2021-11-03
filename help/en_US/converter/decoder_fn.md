@@ -117,17 +117,17 @@ Each of the objects may also contain multiple time-series data points with diffe
 
 ###### Simple decoder example that converts incoming JSON
 
-<table style="max-width: 400px;">
+<table style="max-width: 800px;">
 <thead>
 <tr>
-<th style="max-width: 200px; padding-left: 22px;">
+<th style="max-width: 400px; padding-left: 22px;">
 <b>Input arguments</b>
 </th>
-<th style="max-width: 200px; padding-left: 22px;">
+<th style="max-width: 400px; padding-left: 22px;">
 <b>Decoder function</b>
 </th>
-<th style="max-width: 200px; padding-left: 22px;">
-<b>Output</b>
+<th style="max-width: 400px; padding-left: 22px;">
+<b>Expected output</b>
 </th>
 </tr>
 </thead>
@@ -140,7 +140,7 @@ Each of the objects may also contain multiple time-series data points with diffe
 <span tb-help-popup="converter/examples/decoder/example1/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
 </td>
 <td>
-<span tb-help-popup="converter/examples/decoder/example1/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+<span tb-help-popup="converter/examples/decoder/example1/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder output"></span>
 </td>
 </tr>
 </tbody>
