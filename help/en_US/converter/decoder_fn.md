@@ -34,22 +34,22 @@ Must return a valid JSON document with the following requirements:
    The platform will lookup existing device/asset using those parameters. 
    If such an entity is not found and 'Allow to create devices or assets' setting is enabled for the integration, platform will create new entity.
    The DevEUI, MAC address or other unique identifiers are often used as device names. 
-   See **deviceLabel** to add a non-unique, user-friendly label that you may use instead of device name on the dashboards.   
- * **may** contain **customerName** property. The platform will use it to automatically assign the device to the customer. 
+   See **deviceLabel** to add a non-unique, user-friendly label that you may use instead of device name on the dashboards.
+ * may contain **attributes** object that represents a set of server-side attributes to assign to the device/asset.
+ * may contain **telemetry** object/array that represents time-series data of the device/asset.   
+ * may contain **customerName** property. The platform will use it to automatically assign the device to the customer. 
    Creates a new customer if customer with such a name does not exist.
    The assignment will happen only during the process of the device or asset creation by the current integration (see the first requirement).
    In other words, the platform will ignore this parameter if device or asset already exists.
- * **may** contain **groupName** property. The platform will use it to automatically assign the device to a certain entity group.
+ * may contain **groupName** property. The platform will use it to automatically assign the device to a certain entity group.
    Creates a new group if group with such a name does not exist. 
    The group will be created in scope of the tenant (default) or customer (if **customerName** property is present) 
    The assignment will happen only during the process of the device or asset creation by the current integration (see the first requirement).
    In other words, the platform will ignore this parameter if device or asset already exists.
- * **may** contain **deviceLabel** or **assetLabel** property. 
+ * may contain **deviceLabel** or **assetLabel** property. 
    Useful to create non-unique user-friendly labels for devices/assets that you may use on the dashboards.  
    The assignment will happen only during the process of the device or asset creation by the current integration (see the first requirement).
    In other words, the platform will ignore this parameter if device or asset already exists.
- * **may** contain **attributes** object that represents a set of server-side attributes to assign to the device/asset.   
- * **may** contain **telemetry** object/array that represents time-series data of the device/asset.
    
 
 Let's review few decoder output examples below. 
@@ -93,7 +93,7 @@ Otherwise, the server timestamp is used.
      tb-help-popup-placement="top"
      [tb-help-popup-style]="{maxHeight: '50vh', maxWidth: '50vw'}"
      trigger-style="font-size: 16px;"
-     trigger-text="Output with device label, customer and group names">
+     trigger-text="Output with custom timestamp">
 </div>
 
 <br>
@@ -115,6 +115,38 @@ Each of the objects may also contain multiple time-series data points with diffe
 
 ##### Examples
 
+###### Simple decoder example that converts incoming JSON
+
+<table style="max-width: 400px;">
+<thead>
+<tr>
+<th style="max-width: 200px; padding-left: 22px;">
+<b>Input arguments</b>
+</th>
+<th style="max-width: 200px; padding-left: 22px;">
+<b>Decoder function</b>
+</th>
+<th style="max-width: 200px; padding-left: 22px;">
+<b>Output</b>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<span tb-help-popup="converter/examples/decoder/example1/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="payload"></span><br><br>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/example1/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/example1/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+</td>
+</tr>
+</tbody>
+</table>
+
+
 ###### Complex decoder example with hex encoded value field of the payload 
 
 Let’s assume a complex example where payload is encoded in hex “value” field and there is a timestamp<br>
@@ -134,11 +166,11 @@ associated with each record. First two bytes of “value” field contain batter
 <tbody>
 <tr>
 <td>
-<span tb-help-popup="converter/examples/decoder/example1/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="payload"></span><br><br>
-<span tb-help-popup="converter/examples/decoder/example1/metadata" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="metadata" [tb-help-popup-style]="{maxWidth: '600px'}"></span>
+<span tb-help-popup="converter/examples/decoder/example2/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="payload"></span><br><br>
+<span tb-help-popup="converter/examples/decoder/example2/metadata" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="metadata" [tb-help-popup-style]="{maxWidth: '600px'}"></span>
 </td>
 <td>
-<span tb-help-popup="converter/examples/decoder/example1/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+<span tb-help-popup="converter/examples/decoder/example2/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
 </td>
 </tr>
 </tbody>

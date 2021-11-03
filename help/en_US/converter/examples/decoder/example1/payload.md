@@ -1,18 +1,12 @@
 #### Decoder example json payload
 
 ```json
-[
-  {
-    "serialNumber": "SN-111",
-    "timestamp": 1527863043000,
-    "value": "018f0a91"
-  },
-  {
-    "serialNumber": "SN-333",
-    "timestamp": 1527863041000,
-    "value": "018f0a91"
-  }
-]
+{
+  "serialNumber": "SN-111",
+  "ts": "2021-11-21 14:27:39 UTC",
+  "t": 36.6,
+  "h": 70
+}
 {:copy-code}
 ```
 
