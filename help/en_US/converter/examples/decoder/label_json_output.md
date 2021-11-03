@@ -2,8 +2,9 @@
 
 ```json
 {
-  "deviceName": "Device A",
+  "deviceName": "001B638446E7",
   "deviceType": "thermostat",
+  "deviceLabel": "Room A thermostat",
   "customerName": "Company Name",
   "groupName": "Thermostats",
   "attributes": {
