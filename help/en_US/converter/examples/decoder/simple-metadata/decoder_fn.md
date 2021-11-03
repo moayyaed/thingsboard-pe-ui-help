@@ -2,21 +2,19 @@
 
 ```javascript
 {:code-style="max-height: 500px;"}
-// Decode an uplink message from a buffer
-// payload - array of bytes
-// metadata - key/value object
 
-/** Decoder **/
-
-// decode payload to JSON
+// decode payload to JSON. See helper function below
 var json = decodeToJson(payload);
-
+// convert date to epoch in milliseconds
 var timestamp = Date.parse(json.ts);
-// Result object with device/asset attributes/telemetry data
+// Construct result object with time-series data
 var result = {
-// Use deviceName and deviceType or assetName and assetType, but not both.
     deviceName: json.serialNumber,
-    deviceType: "Thermostat",
+    deviceType: metadata.deviceType,
+    customerName: metadata.customerName,
+    attributes: {
+        model: metadata.deviceModel
+    },
     telemetry: {
         ts: timestamp,
         values: {
@@ -26,19 +24,13 @@ var result = {
     }
 };
 
-/** Helper functions **/
-
+/** Helper function to decode raw payload bytes to string**/
 function decodeToString(payload) {
     return String.fromCharCode.apply(String, payload);
 }
-
+/** Helper function to decode raw payload bytes to JSON object**/
 function decodeToJson(payload) {
-    // covert payload to string.
-    var str = decodeToString(payload);
-
-    // parse string to JSON
-    var data = JSON.parse(str);
-    return data;
+    return JSON.parse(decodeToString(payload));
 }
 
 return result;

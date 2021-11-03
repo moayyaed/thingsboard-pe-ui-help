@@ -115,66 +115,132 @@ Each of the objects may also contain multiple time-series data points with diffe
 
 ##### Examples
 
-###### Simple decoder example that converts incoming JSON
+See table with the examples that contain input parameters, decoder function and expected output.
 
-<table style="max-width: 800px;">
+<table style="max-width: 1200px;">
 <thead>
 <tr>
-<th style="max-width: 400px; padding-left: 22px;">
-<b>Input arguments</b>
+<th style="max-width: 150px; padding-left: 22px;">
+<b>Name</b>
 </th>
-<th style="max-width: 400px; padding-left: 22px;">
-<b>Decoder function</b>
+<th style="max-width: 150px; padding-left: 22px;">
+<b>Content type</b>
 </th>
-<th style="max-width: 400px; padding-left: 22px;">
-<b>Expected output</b>
+<th style="max-width: 300px; padding-left: 22px;">
+<b>Notes</b>
+</th>
+<th style="max-width: 200px; padding-left: 22px;">
+<b>Input</b>
+</th>
+<th style="max-width: 200px; padding-left: 22px;">
+<b>Decoder</b>
+</th>
+<th style="max-width: 200px; padding-left: 22px;">
+<b>Output</b>
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>
-<span tb-help-popup="converter/examples/decoder/example1/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="payload"></span><br><br>
+<b>Simple JSON with date</b>
 </td>
 <td>
-<span tb-help-popup="converter/examples/decoder/example1/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+<b>JSON</b>
 </td>
 <td>
-<span tb-help-popup="converter/examples/decoder/example1/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder output"></span>
+<b>Parse specific JSON format with string representation of the timestamp</b>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-json/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="payload"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-json/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-json/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder output"></span>
+</td>
+</tr>
+<tr>
+<td>
+<b>Simple CSV</b>
+</td>
+<td>
+<b>TEXT</b>
+</td>
+<td>
+<b>Parse CSV data</b>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-csv/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="payload"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-csv/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-csv/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder output"></span>
+</td>
+</tr>
+<tr>
+<td>
+<b>Simple binary data</b>
+</td>
+<td>
+<b>BINARY</b>
+</td>
+<td>
+<b>Parse binary payload with device serial number, battery level, temperature and saturation</b>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-binary/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="payload"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-binary/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-binary/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder output"></span>
+</td>
+</tr>
+<tr>
+<td>
+<b>JSON with multiple hex encoded values</b>
+</td>
+<td>
+<b>JSON</b>
+</td>
+<td>
+<b>Convert multiple JSON objects with hex “value” fields and timestamp</b>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/complex-json-hex/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="payload"></span><br><br>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/complex-json-hex/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/complex-json-hex/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder output"></span>
+</td>
+</tr>
+<tr>
+<td>
+<b>Use metadata fields</b>
+</td>
+<td>
+<b>JSON</b>
+</td>
+<td>
+<b>Use metadata fields to determine device type, model and customer name</b>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-metadata/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="payload"></span><br><br>
+<span tb-help-popup="converter/examples/decoder/simple-metadata/metadata" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="metadata" [tb-help-popup-style]="{maxWidth: '600px'}"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-metadata/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
+</td>
+<td>
+<span tb-help-popup="converter/examples/decoder/simple-metadata/output" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder output"></span>
 </td>
 </tr>
 </tbody>
 </table>
-
-
-###### Complex decoder example with hex encoded value field of the payload 
-
-Let’s assume a complex example where payload is encoded in hex “value” field and there is a timestamp<br>
-associated with each record. First two bytes of “value” field contain battery and second two bytes contain temperature.
-
-<table style="max-width: 400px;">
-<thead>
-<tr>
-<th style="max-width: 200px; padding-left: 22px;">
-<b>Input arguments</b>
-</th>
-<th style="max-width: 200px; padding-left: 22px;">
-<b>Decoder function</b>
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<span tb-help-popup="converter/examples/decoder/example2/payload" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="payload"></span><br><br>
-<span tb-help-popup="converter/examples/decoder/example2/metadata" tb-help-popup-placement="top" trigger-style="font-size: 16px;" trigger-text="metadata" [tb-help-popup-style]="{maxWidth: '600px'}"></span>
-</td>
-<td>
-<span tb-help-popup="converter/examples/decoder/example2/decoder_fn" tb-help-popup-placement="top" trigger-style="font-size: 16px; line-height: 75px;" trigger-text="Decoder function"></span>
-</td>
-</tr>
-</tbody>
-</table>
-
-<br>
-<br>

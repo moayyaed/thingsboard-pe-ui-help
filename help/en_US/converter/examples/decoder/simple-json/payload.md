@@ -1,4 +1,4 @@
-#### Decoder example json payload
+#### JSON payload example
 
 ```json
 {
