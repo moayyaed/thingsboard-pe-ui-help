@@ -3,21 +3,14 @@
 <div class="divider"></div>
 <br/>
 
-Notification subject, message and button support templatization and localization.
+Notification subject and message fields support templatization.
 The list of available templatization parameters depends on the template type.
 See the available types and parameters below:
 
 Available template parameters:
 
-* `entityType` - the entity type, e.g. 'Device';
-* `entityId` - the entity id as uuid string;
-* `entityName` - the name of the entity;
-* `actionType` - one of: 'added', 'updated', 'deleted';
-* `userId` - id of the user who made the action;
-* `userTitle` - title of the user who made the action;
-* `userEmail` - email of the user who made the action;
-* `userFirstName` - first name of the user who made the action;
-* `userLastName` - last name of the user who made the action;
+* `userFullName` - full name of the user;
+* `userEmail` - email of the user;
 * `recipientTitle` - title of the recipient (first and last name if specified, email otherwise);
 * `recipientEmail` - email of the recipient;
 * `recipientFirstName` - first name of the recipient;
@@ -32,8 +25,8 @@ You may also modify the value of the parameter with one of the suffixes:
 
 To localize the notification, use `translate` suffix: `${some.translation.key:translate}`
 
-For example, if you have a custom translation key `custom.notifications.greetings` with value `Hello, ${recipientFirstName}!`, the template
-`${custom.notifications.greetings:translate}` will be transformed to `Hello, John!`. 
+For example, if you have a custom translation key `custom.notifications.user-activated` with value `${userFullName} just activated his account`, the template
+`${custom.notifications.user-activated:translate}` will be transformed to `John Smith just activated his account`.
 The needed locale is taken from recipient's profile settings, using English by default.
 
 
@@ -41,33 +34,18 @@ The needed locale is taken from recipient's profile settings, using English by d
 
 ##### Examples
 
-Let's assume the notification about device 'T1' was added by user 'john.doe@gmail.com'.
+Let's assume user 'tenant@thingsboard.org' activated his account.
 The following template:
 
 ```text
-${entityType:capitalize} was ${actionType}!
+${userEmail} was activated
 {:copy-code}
 ```
 
 will be transformed to:
 
 ```text
-Device was added!
-```
-
-<br/>
-
-The following template:
-
-```text
-${entityType} '${entityName}' was ${actionType} by user ${userEmail}
-{:copy-code}
-```
-
-will be transformed to:
-
-```text
-Device 'T1' was added by user john.doe@gmail.com
+tenant@thingsboard.org was activated
 ```
 
 <br>
